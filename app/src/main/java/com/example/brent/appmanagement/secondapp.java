@@ -30,8 +30,9 @@ public class secondapp extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getApplicationContext(), MainActivity.class);
-                i.putExtra("rating2", "you have rated this app " + String.valueOf(ratingBar.getRating() + " out of 5"));
-                startActivity(i);
+                i.putExtra("rating2", "you have rated this app " + String.valueOf(ratingBar.getRating() + " stars out of 5"));
+                setResult(1, i);
+                finish();
             }
         });
     }

@@ -33,8 +33,10 @@ public class firstapp extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getApplicationContext(), MainActivity.class);
-                i.putExtra("rating", "You have rated this app " + String.valueOf(ratingBar.getRating() + " out of 5"));
-                startActivity(i);
+
+                i.putExtra("rating", "You have rated this app " + String.valueOf(ratingBar.getRating() + " stars out of 5"));
+                setResult(1, i);
+                finish();
             }
         });
     }
