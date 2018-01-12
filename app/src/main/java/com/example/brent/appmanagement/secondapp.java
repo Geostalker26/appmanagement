@@ -1,6 +1,8 @@
 package com.example.brent.appmanagement;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -29,10 +31,20 @@ public class secondapp extends AppCompatActivity {
         returntomain2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                /*Intent i = new Intent(getApplicationContext(), MainActivity.class);*//*
                 i.putExtra("rating2", "you have rated this app " + String.valueOf(ratingBar.getRating() + " stars out of 5"));
-                setResult(1, i);
-                finish();
+                setResult(-1);
+                finish();*/
+                Float data2 = (ratingBar.getRating());
+
+
+                SharedPreferences datasent = getPreferences(Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = datasent.edit();
+                editor.putFloat("rating1", data2);
+                editor.apply();
+
+                Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(i);
             }
         });
     }
